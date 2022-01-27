@@ -13,4 +13,8 @@ class Student extends Model
     public function school(){
         return $this->belongsTo('App\Models\School','school_id');
     }
+
+    public function orders(){
+        return $this->hasMany('App\Models\StudentOrder','student_id');
+    }
 }

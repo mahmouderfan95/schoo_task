@@ -27,6 +27,8 @@ class StudentController extends Controller
                 'school_id' => $st->school_id,
                 'student_id' => $st->id,
             ]);
+            $st->order = StudentOrder::where('student_id',$st->id)->count();
+            $st->save();
             $admin = auth()->user();
             //Notification::send($admin, new \App\Notifications\StudentOrder($st));
             $admin->notify(new \App\Notifications\StudentOrder($st));
